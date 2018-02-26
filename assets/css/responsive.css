@@ -1,0 +1,155 @@
+/* Custom, iPhone Retina */ 
+@media only screen and (max-width : 350px) {
+    /*stilovi za header*/
+    header .logo_img {
+        float: right;
+        width: 80%;
+    }
+    /*stilovi za front.jpg*/
+    /*stilovi za main*/
+    /*main levi deo*/
+    /*main desni deo*/
+    /*stilovi za footer*/
+}
+
+/* Extra Small Devices, Phones */ 
+@media only screen and (min-width : 480px) {
+    
+}
+
+/* Small Devices, Tablets */
+@media only screen and (min-width : 768px) {
+    /*stilovi za header*/
+    header .nav_btn {
+        display: none;
+    }
+    header .logo_img {
+        float: left;
+        border-right: 1px solid #B3595A;
+        width: 35%;
+    }
+    header .pusher {
+        display: none;
+    }
+    header nav {
+        float: right;
+        width: 60%;
+        display: block;
+    }
+    header nav ul li {
+        float: left;
+        list-style: none;
+        width: 20%;
+        height: 80px;
+        text-align: center;
+    }
+    /*stilovi za front.jpg*/
+    /*stilovi za main*/
+    
+    /*main levi deo*/
+    main .left .prvi div p {
+        float: left;
+        width: 50%;
+    }
+    main .left .prvi div div {
+        float: right;
+        width: 50%;
+    }
+    main .left .prvi div div img {
+        width: 100%;
+    }
+    /*contact form*/
+    main .left form fieldset div input[type="text"],
+    main .left form fieldset div input[type="email"] {
+        width: initial;
+    }
+    main .left form fieldset textarea {
+        width: 40%;
+    }
+    /*main desni deo*/
+    /*stilovi za footer*/
+}
+
+/* Medium Devices, Desktops */
+@media only screen and (min-width : 992px) {
+    /*stilovi za header*/
+    header .logo_img {
+        height: 80px;
+        width: 22.5%;
+    }
+    header nav {
+        width: 76%;
+    }
+    header nav ul li {
+    width: 11%;
+    height: 80px;
+}
+    /*stilovi za main*/
+    /*main levi deo*/
+    main .left {
+        float:left;
+        width: 63%;
+    }
+    main .left .prvi div p {
+        float: left;
+        width: 55%;
+    }
+    main .left .prvi div div {
+        float: right;
+        width: 40%;
+    }
+    main .left .treci .news_left,
+    main .left .treci .news_right {
+        width: 49%;
+    }
+    main .left .treci .news_left {
+        float: left;
+    }
+    main .left .treci .news_right {
+        float: right;
+    }
+    main .left .treci .news_left .news_slider,
+    main .left .treci .news_right .news_slider {
+        height: 600px;
+        animation: news_slider 15s infinite;
+    }
+    @keyframes news_slider {
+        0%{
+            margin-top: 0;
+        }
+        50%{
+            margin-top: -200px;
+        }
+        100%{
+            margin-top: -400px;
+        }
+    }
+    main .left .treci .news_left .news_slider div + div,
+    main .left .treci .news_right .news_slider div + div {
+        display: block;
+    }
+    main .left .treci .news_left .news_slider div img,
+    main .left .treci .news_right .news_slider div img{
+        width: 30%;
+    }
+    /*news page animation off*/
+    main .left p + .treci .news_left .news_slider,
+    main .left p + .treci .news_right .news_slider {
+        animation: none;
+    }
+    /*main desni deo*/
+    main .right {
+        float: right;
+        width: 31%;
+    }
+    .right div > img {
+        margin-top: 30px;
+        width: 100%;
+    }
+}
+/* Large Devices, Wide Screens */
+@media only screen and (min-width : 1200px) {
+    .wrapper {
+        width: 1000px;
+    }
+}
