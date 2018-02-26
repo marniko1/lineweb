@@ -85,6 +85,9 @@
     height: 80px;
 }
     /*stilovi za main*/
+    main {
+        min-height: 800px;
+    }
     /*main levi deo*/
     main .left {
         float:left;

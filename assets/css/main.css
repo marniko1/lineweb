@@ -261,6 +261,16 @@ main .left form fieldset textarea {
 	margin-bottom: 20px;
 	width: 60%;
 }
+/*login/upload form*/
+section {
+	width: 60%;
+	margin: 0 auto;
+	margin-top: 200px;
+}
+section * {
+	margin-bottom: 10px;
+}
+
 /*news page show all news*/
 main .left p + .treci .news_left,
 main .left p + .treci .news_right {
