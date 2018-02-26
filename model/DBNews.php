@@ -28,7 +28,7 @@ class DBNews {
 		$news = self::allNews();
 		foreach ($news as $single_news) {
 			if($single_news['id'] == $id) {
-				return $single_news['title'];
+				return $single_news;
 			}
 		}
 	}

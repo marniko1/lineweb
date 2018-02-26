@@ -19,7 +19,7 @@ class news extends Controller{
 			<div clas="single_news_holder">
 				<h3><?php echo $value['title']; ?></h3>
 				<img src="/lineweb/assets/uploads/images/<?php echo $value['image']; ?>">
-				<p class="clearfix"><?php echo substr($value['text'], 0, 200).'... '; ?><a href="#">Read more...</a></p>
+				<p class="clearfix"><?php echo substr($value['text'], 0, 200).'... '; ?><a href="<?php echo $value['id']; ?>">Read more...</a></p>
 			</div>
 			<?php
 		}
@@ -35,7 +35,7 @@ class news extends Controller{
 			<div clas="single_news_holder">
 				<h3><?php echo $value['title']; ?></h3>
 				<img src="/lineweb/assets/uploads/images/<?php echo $value['image']; ?>">
-				<p class="clearfix"><?php echo substr($value['text'], 0, 200).'... '; ?><a href="#">Read more...</a></p>
+				<p class="clearfix"><?php echo substr($value['text'], 0, 200).'... '; ?><a href="<?php echo $value['id']; ?>">Read more...</a></p>
 			</div>
 			<?php
 		}
@@ -51,5 +51,23 @@ class news extends Controller{
 		}
 		$pg_output = ob_get_clean();
 		return $pg_output;
+	}
+
+	public function prepareSingle($single) {
+		ob_start();
+		?>
+		<h1><?php echo $single['title']; ?></h1>
+		<img src="/lineweb/assets/uploads/images/<?php echo $single['image']; ?>">
+		<p class="clearfix"><?php echo $single['text']; ?></p>
+		<?php 
+		$single_output = ob_get_clean();
+		return $single_output;
+	}
+
+	public function getSingle($id) {
+		$single = DBNews::singleNews($id);
+		$this->data['title'] = 'News/'.$single['title'];
+		$this->data['content'] = $this->prepareSingle($single);
+		$this->show_view('news-single');
 	}
 }
