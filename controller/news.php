@@ -1,13 +1,13 @@
 <?php
 
 class news extends Controller{
-	public function index(){
+	public function index($pg){
 		$this->data['title'] = 'News';
-		$top_six = DBNews::topSix();
+		$top_six = DBNews::topSix($pg);
 		$this->data['content_left'] = $this->prepareTopSixLeft($top_six);
 		$this->data['content_right'] = $this->prepareTopSixRight($top_six);
 		$total_news_num = DBNews::totalNewsNumber();
-		$this->data['pagination'] = $this->preparePagination($total_news_num);
+		$this->data['pagination'] = $this->preparePagination($total_news_num,$pg);
 		$this->show_view('news');
 	}
 
@@ -43,11 +43,29 @@ class news extends Controller{
 		return $ts_right_output;
 	}
 
-	public function preparePagination($total_news_num) {
+	public function preparePagination($total_news_num,$pg) {
 		$pg_num = ceil($total_news_num/6);
 		ob_start();
+		if ($pg > 1) {
+		?>
+			<a href="<?php echo 'p'.(substr($_GET['m'], 1)-1); ?>">&laquo;</a>
+		<?php
+		} else {
+		?>
+			<a href="#" style="pointer-events: none;">&laquo;</a>
+		<?php
+		}
 		for ($i=1; $i <= $pg_num; $i++) { 
 			echo '<a href="p'.$i.'">'.$i.'</a>';
+		}
+		if ($pg < $pg_num) {
+		?>
+			<a href="<?php echo 'p'.(substr($_GET['m'], 1)+1); ?>">&raquo;</a>
+		<?php
+		} else {
+		?>
+			<a href="#" style="pointer-events: none;">&raquo;</a>
+		<?php
 		}
 		$pg_output = ob_get_clean();
 		return $pg_output;

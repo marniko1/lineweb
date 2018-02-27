@@ -6,8 +6,8 @@ function my_autoloader($classname) {
 
 spl_autoload_register('my_autoloader');
 
-$proba = new DBLogin;
-var_dump($proba->loginData('marniko','bubica'));die;
+// $proba = new DBLogin;
+// var_dump($proba->loginData('marniko','bubica'));die;
 
 class Controller{
 	public $data = array();
@@ -27,12 +27,16 @@ if (isset($_GET['m']) && !empty($_GET['m'])) {
 		$method = $_GET['m'];
 		$c->$method();
 	} else {
-		if($_GET['c'] == 'news' && $_GET['m'] == 'index') {
-			$method = $_GET['m'];
-			$c->$method();
-		} else {
+		if($_GET['c'] == 'news' && $_GET['m'] == 'index' || $_GET['c'] == 'news' && $_GET['m'] == 'p1') {
+			$method = 'index';
+			$c->$method(0);
+		} else if(strpos($_GET['m'], 'p') === false) {
 			$id = $_GET['m'];
 			$c->getSingle($id);
+		} else {
+			$pg = substr($_GET['m'], 1)*6-6;
+			$method = 'index';
+			$c->$method($pg);
 		}
 	}
 	

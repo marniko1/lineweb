@@ -2,7 +2,7 @@
 
 class DBconnect {
 	private static $DBSERVER = 'localhost';
-	private static $DBUSER = 'marniko';
+	private static $DBUSER = 'marniko1';
 	private static $DBPASS = 'bubica';
 	private static $DBNAME = 'lineweb';
 	private static $conn = null;

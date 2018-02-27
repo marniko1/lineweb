@@ -22,7 +22,13 @@
 					}
 				});
 			});
+	      	$(document).on('click', '.pagination a', function(e) {
+			    e.preventDefault();
+			    var url = $(this).attr("href");
+			    $('body').load(url);
+			});
 		</script>
+	</head>
 	<body>
 		<div class="wrapper">
 			<header>

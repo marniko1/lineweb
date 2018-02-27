@@ -33,9 +33,9 @@ class DBNews {
 		}
 	}
 
-	public static function topSix() {
+	public static function topSix($pg=0) {
 		$db = DBconnect::db_connection();
-		$req = $db->query('SELECT * FROM news ORDER BY id DESC LIMIT 6');
+		$req = $db->query('SELECT * FROM news ORDER BY id DESC LIMIT '.$pg.',6');
 		$top_six = $req->fetch_all(MYSQLI_ASSOC);
 		
 		return $top_six;
