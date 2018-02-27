@@ -52,7 +52,7 @@ class news extends Controller{
 		<?php
 		} else {
 		?>
-			<a href="#" style="pointer-events: none;">&laquo;</a>
+			<a href="#" style="display: none;">&laquo;</a>
 		<?php
 		}
 		for ($i=1; $i <= $pg_num; $i++) { 
@@ -70,7 +70,7 @@ class news extends Controller{
 			}
 		} else {
 		?>
-			<a href="#" style="pointer-events: none;">&raquo;</a>
+			<a href="#" style="display: none;">&raquo;</a>
 		<?php
 		}
 		$pg_output = ob_get_clean();
