@@ -27,7 +27,7 @@ if (isset($_GET['m']) && !empty($_GET['m'])) {
 		$method = $_GET['m'];
 		$c->$method();
 	} else {
-		if($_GET['c'] == 'news' && $_GET['m'] == 'index' || $_GET['c'] == 'news' && $_GET['m'] == 'p1') {
+		if($_GET['c'] == 'news' && $_GET['m'] == 'index') {
 			$method = 'index';
 			$c->$method(0);
 		} else if(strpos($_GET['m'], 'p') === false) {
