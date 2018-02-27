@@ -46,19 +46,19 @@ class news extends Controller{
 	public function preparePagination($total_news_num,$pg) {
 		$pg_num = ceil($total_news_num/6);
 		ob_start();
-		if ($pg > 1) {
+		if (substr($_GET['m'], 1) > 1) {
 		?>
 			<a href="<?php echo 'p'.(substr($_GET['m'], 1)-1); ?>">&laquo;</a>
 		<?php
 		} else {
 		?>
-			<a href="#" style="display: none;">&laquo;</a>
+			<a href="#" style="visibility: hidden;">&laquo;</a>
 		<?php
 		}
 		for ($i=1; $i <= $pg_num; $i++) { 
 			echo '<a href="p'.$i.'">'.$i.'</a>';
 		}
-		if ($pg < $pg_num) {
+		if (substr($_GET['m'], 1) < $pg_num) {
 			if($_GET['m'] == 'index') {
 			?>
 				<a href="<?php echo 'p'.(substr($_GET['m'], 1)+2); ?>">&raquo;</a>
@@ -70,7 +70,7 @@ class news extends Controller{
 			}
 		} else {
 		?>
-			<a href="#" style="display: none;">&raquo;</a>
+			<a href="#" style="visibility: hidden;">&raquo;</a>
 		<?php
 		}
 		$pg_output = ob_get_clean();
