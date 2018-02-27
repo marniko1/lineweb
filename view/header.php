@@ -22,11 +22,16 @@
 					}
 				});
 			});
-	      	$(document).on('click', '.pagination a', function(e) {
-			    e.preventDefault();
-			    var url = $(this).attr("href");
-			    $('body').load(url);
-			});
+	  //     	$(document).on('click', '.pagination a', function(e) {
+			//     e.preventDefault();
+			//     var url = $(this).attr("href");
+			//     $('body').load(url);
+			// });
+			    $(document).on('click', '.pagination a', function(e) {
+				    e.preventDefault();
+				    var page = $(this).attr("href");
+				    $('#content').load('/lineweb/news/'+ page +' #content');
+				});
 		</script>
 	</head>
 	<body>

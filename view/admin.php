@@ -34,6 +34,9 @@
 								<textarea name="text" id="text"></textarea>
 							</div>
 							<div>
+								<input type="file" name="">
+							</div>
+							<div>
 								<input type="submit" value="Submit">
 								<input type="reset" value="Reset">
 							</div>

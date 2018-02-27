@@ -17,7 +17,7 @@ class index extends Controller{
 			<div clas="single_news_holder">
 				<h3><?php echo $value['title']; ?></h3>
 				<img src="/lineweb/assets/uploads/images/<?php echo $value['image']; ?>">
-				<p class="clearfix"><?php echo substr($value['text'], 0, 200).'... '; ?><a href="#">Read more...</a></p>
+				<p class="clearfix"><?php echo substr($value['text'], 0, 200).'... '; ?><a href="news/<?php echo $value['id']; ?>">Read more...</a></p>
 			</div>
 			<?php
 		}
@@ -33,7 +33,7 @@ class index extends Controller{
 			<div clas="single_news_holder">
 				<h3><?php echo $value['title']; ?></h3>
 				<img src="/lineweb/assets/uploads/images/<?php echo $value['image']; ?>">
-				<p class="clearfix"><?php echo substr($value['text'], 0, 200).'... '; ?><a href="#">Read more...</a></p>
+				<p class="clearfix"><?php echo substr($value['text'], 0, 200).'... '; ?><a href="news/<?php echo $value['id']; ?>">Read more...</a></p>
 			</div>
 			<?php
 		}

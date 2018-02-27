@@ -59,9 +59,15 @@ class news extends Controller{
 			echo '<a href="p'.$i.'">'.$i.'</a>';
 		}
 		if ($pg < $pg_num) {
-		?>
-			<a href="<?php echo 'p'.(substr($_GET['m'], 1)+1); ?>">&raquo;</a>
-		<?php
+			if($_GET['m'] == 'index') {
+			?>
+				<a href="<?php echo 'p'.(substr($_GET['m'], 1)+2); ?>">&raquo;</a>
+			<?php
+			} else {
+			?>
+				<a href="<?php echo 'p'.(substr($_GET['m'], 1)+1); ?>">&raquo;</a>
+			<?php
+			}
 		} else {
 		?>
 			<a href="#" style="pointer-events: none;">&raquo;</a>

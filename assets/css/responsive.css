@@ -114,7 +114,7 @@
     main .left .treci .news_left .news_slider,
     main .left .treci .news_right .news_slider {
         height: 600px;
-        animation: news_slider 15s infinite;
+        animation: news_slider 20s infinite 2s alternate;
     }
     @keyframes news_slider {
         0%{
