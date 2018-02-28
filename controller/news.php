@@ -7,74 +7,41 @@ class news extends Controller{
 		$this->data['content_left'] = $this->prepareTopSixLeft($top_six);
 		$this->data['content_right'] = $this->prepareTopSixRight($top_six);
 		$total_news_num = DBNews::totalNewsNumber();
-		$this->data['pagination'] = $this->preparePagination($total_news_num,$pg);
+		$this->data['pagination_links'] = $this->preparePaginationLinks($total_news_num,$pg);
 		$this->show_view('news');
 	}
 
 	public function prepareTopSixLeft($top_six) {
 		$top_six_left = array_slice($top_six, 0, 3);
-		ob_start();
-		foreach ($top_six_left as $value) {
-			?>
-			<div clas="single_news_holder">
-				<h3><?php echo $value['title']; ?></h3>
-				<img src="/lineweb/assets/uploads/images/<?php echo $value['image']; ?>">
-				<p class="clearfix"><?php echo substr($value['text'], 0, 200).'... '; ?><a href="<?php echo $value['id']; ?>">Read more...</a></p>
-			</div>
-			<?php
-		}
-		$ts_left_output = ob_get_clean();
-		return $ts_left_output;
+		return $top_six_left;
 	}
 
 	public function prepareTopSixRight($top_six) {
 		$top_six_right = array_slice($top_six, 3, 3);
-		ob_start();
-		foreach ($top_six_right as $value) {
-			?>
-			<div clas="single_news_holder">
-				<h3><?php echo $value['title']; ?></h3>
-				<img src="/lineweb/assets/uploads/images/<?php echo $value['image']; ?>">
-				<p class="clearfix"><?php echo substr($value['text'], 0, 200).'... '; ?><a href="<?php echo $value['id']; ?>">Read more...</a></p>
-			</div>
-			<?php
-		}
-		$ts_right_output = ob_get_clean();
-		return $ts_right_output;
+		return $top_six_right;
 	}
 
-	public function preparePagination($total_news_num,$pg) {
+	public function preparePaginationLinks($total_news_num,$pg) {
 		$pg_num = ceil($total_news_num/6);
-		ob_start();
+		$links = array();
 		if (substr($_GET['m'], 1) > 1) {
-		?>
-			<a href="<?php echo 'p'.(substr($_GET['m'], 1)-1); ?>">&laquo;</a>
-		<?php
+			array_push($links, ['p'.(substr($_GET['m'], 1)-1), '&laquo;']);
 		} else {
-		?>
-			<a href="#" style="visibility: hidden;">&laquo;</a>
-		<?php
+			array_push($links, ['p1', '&laquo;']);
 		}
 		for ($i=1; $i <= $pg_num; $i++) { 
-			echo '<a href="p'.$i.'">'.$i.'</a>';
+			array_push($links, ['p'.$i, $i]);
 		}
 		if (substr($_GET['m'], 1) < $pg_num) {
 			if($_GET['m'] == 'index') {
-			?>
-				<a href="<?php echo 'p'.(substr($_GET['m'], 1)+2); ?>">&raquo;</a>
-			<?php
+				array_push($links, ['p'.(substr($_GET['m'], 1)+2), '&raquo;']);
 			} else {
-			?>
-				<a href="<?php echo 'p'.(substr($_GET['m'], 1)+1); ?>">&raquo;</a>
-			<?php
+				array_push($links, ['p'.(substr($_GET['m'], 1)+1), '&raquo;']);
 			}
 		} else {
-		?>
-			<a href="#" style="visibility: hidden;">&raquo;</a>
-		<?php
+			array_push($links, ['$_GET[\'m\']', '&raquo;']);
 		}
-		$pg_output = ob_get_clean();
-		return $pg_output;
+		return $links;
 	}
 
 	public function prepareSingle($single) {

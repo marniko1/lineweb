@@ -1,5 +1,6 @@
 			<main class="clearfix">
 				<section>
+					<?php if(!isset($_SESSION['user'])) { ?>
 					<form action="" method="post">
 						<fieldset>
 							<legend>Login</legend>
@@ -12,10 +13,16 @@
 								<input type="password" name="password" id="password">
 							</div>
 							<div>
-								<input type="submit" value="Submit">
+								<input type="submit" name="submit" value="Submit">
 							</div>
+							<?php
+							// if (isset($this->data['message'])) {
+								echo $this->data['message'];
+							// }
+							?>
 						</fieldset>
-					</form>	
+					</form>
+					<?php } else { ?>
 					<form action="" method="post" enctype="multipart/form-data">
 						<fieldset>
 							<legend>Upload news</legend>
@@ -37,10 +44,11 @@
 								<input type="file" name="">
 							</div>
 							<div>
-								<input type="submit" value="Submit">
+								<input type="submit" name="submit" value="Submit">
 								<input type="reset" value="Reset">
 							</div>
 						</fieldset>
 					</form>
+					<?php } ?>
 				</section>
 			</main>

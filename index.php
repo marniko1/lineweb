@@ -1,5 +1,4 @@
 <?php
-require 'config/database_conn.php';
 function my_autoloader($classname) {
     include 'model/' . $classname . '.php';
 }

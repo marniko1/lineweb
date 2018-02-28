@@ -24,12 +24,32 @@
 						<h2>LATEST NEWS</h2>
 						<div class="news_left">
 							<div class="news_slider">
-								<?php echo $this->data['content_left']; ?>
+								<?php 
+								foreach ($this->data['content_left'] as $value) {
+									?>
+									<div clas="single_news_holder">
+										<h3><?php echo $value['title']; ?></h3>
+										<img src="/lineweb/assets/uploads/images/<?php echo $value['image']; ?>">
+										<p class="clearfix"><?php echo substr($value['text'], 0, 200).'... '; ?><a href="news/<?php echo $value['id']; ?>">Read more...</a></p>
+									</div>
+									<?php
+								}
+								?>
 							</div>
 						</div>
 						<div class="news_right">
 							<div class="news_slider">
-								<?php echo $this->data['content_right']; ?>
+								<?php 
+								foreach ($this->data['content_right'] as $value) {
+									?>
+									<div clas="single_news_holder">
+										<h3><?php echo $value['title']; ?></h3>
+										<img src="/lineweb/assets/uploads/images/<?php echo $value['image']; ?>">
+										<p class="clearfix"><?php echo substr($value['text'], 0, 200).'... '; ?><a href="news/<?php echo $value['id']; ?>">Read more...</a></p>
+									</div>
+									<?php
+								}
+								?>
 							</div>	
 						</div>
 					</div>
