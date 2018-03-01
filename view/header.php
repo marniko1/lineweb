@@ -35,6 +35,15 @@
 		</script>
 	</head>
 	<body>
+		<?php if(isset($_SESSION['user'])) { ?>
+			<div class="logout">
+				<a href="/lineweb/admin/index">Admin panel</a>
+				<form action="" method="post" name="logout_form">
+					<input type="submit" name="logout" value="Logout">
+				</form>
+				<span>Korisnik <?php echo $_SESSION['user']; ?></span>
+			</div>
+		<?php } ?>
 		<div class="wrapper">
 			<header>
 				<div class="nav_btn">

@@ -1,4 +1,5 @@
 <?php
+session_start();
 function my_autoloader($classname) {
     include 'model/' . $classname . '.php';
 }
@@ -6,12 +7,15 @@ function my_autoloader($classname) {
 spl_autoload_register('my_autoloader');
 
 // $proba = new DBLogin;
-// var_dump($proba->loginData('marniko','bubica'));die;
+// var_dump(DBLogin::loginData('marniko','bubica'));die;
 
 class Controller{
 	public $data = array();
 
 	public function show_view($view) {
+		if (isset($_POST['logout'])) {
+			unset($_SESSION['user']);
+		}
 		require 'view/header.php';
 		require 'view/'.$view.'.php';
 		require 'view/footer.php';

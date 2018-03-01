@@ -16,9 +16,9 @@
 								<input type="submit" name="submit" value="Submit">
 							</div>
 							<?php
-							// if (isset($this->data['message'])) {
+							if (isset($this->data['message'])) {
 								echo $this->data['message'];
-							// }
+							}
 							?>
 						</fieldset>
 					</form>

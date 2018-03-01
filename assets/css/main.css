@@ -37,6 +37,24 @@ body {
   clear: both;
   height: 0;
 }
+body > .logout {
+	position: fixed;
+	right: 0;
+	top: 0;
+	width: 100%;
+	color: #fff;
+	background-color: rgba(0,0,0,.3);
+	z-index: 100;
+}
+.logout > a {
+	text-decoration: none;
+	color: #fff;
+}
+.logout > span, form[name = logout_form] {
+	display: block;
+	float: right;
+	margin-left: 5px;
+}
 .wrapper {
 	background-color: #999999;
 	width: 73%;

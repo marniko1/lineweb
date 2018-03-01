@@ -1,18 +1,18 @@
 <?php
 
 class admin extends Controller{
-	
+
 	public function index(){
 		$this->data['title'] = 'Admin Panel';
-		$this->show_view('admin');
 		if (isset($_POST['submit'])) {
-			$this->login();
-			var_dump($this->login_data);
-			if ($this->login_data = false) {
-				var_dump('ovde sam');
-				$this->data['message'] = 'Neuspesno logovanje';
+			$user_data = $this->login();
+			if ($user_data == false) {
+				$this->data['message'] = 'Wrong username or password.';
+			} else {
+				$_SESSION['user'] = $user_data['user'];
 			}
 		}
+		$this->show_view('admin');
 	}
 
 	public function login() {
