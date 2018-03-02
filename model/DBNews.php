@@ -10,20 +10,39 @@ class DBNews extends DB {
 
 	public static function singleNews($id) {
 		$sql = 'SELECT * FROM news where id="'.$id.'"';
-		$news = DB::executeSQL($sql);
+		$req = DB::executeSQL($sql);
+		$news = $req->fetch_all(MYSQLI_ASSOC);
 		return $news[0];
 	}
 
 	public static function topSix($pg=0) {
 		$sql = 'SELECT * FROM news ORDER BY id DESC LIMIT '.$pg.',6';
-		$top_six = DB::executeSQL($sql);
+		$req = DB::executeSQL($sql);
+		$top_six = $req->fetch_all(MYSQLI_ASSOC);
 		return $top_six;
 	}
 
 	public static function totalNewsNumber() {
-		$db = DB::getInstance();
-		$res = $db->query("SELECT count(*) FROM news");
-		$total_news_num = $res->fetch_row();
+		$sql = "SELECT count(*) FROM news";
+		$req = DB::executeSQL($sql);
+		$total_news_num = $req->fetch_row();
 		return $total_news_num[0];
+	}
+
+	// public static function getLatestNewsId () {
+	// 	$sql = "SELECT MAX(id) FROM news";
+	// 	$req = DB::executeSQL($sql);
+	// 	$max_id = $req->fetch_row();
+	// 	return $max_id[0];
+	// }
+
+	public static function insertNewsIntoDB($title,$image_name,$news_text,$author) {
+		$sql = "INSERT INTO news (title,image,news_text,author) VALUES ('$title','$image_name','$news_text','$author')";
+		$req = DB::executeSQL($sql);
+		if ($req) {
+			return true;
+		} else {
+			return false;
+		}
 	}
 }

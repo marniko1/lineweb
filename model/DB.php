@@ -13,15 +13,13 @@ class DB {
 		return self::$conn;
 	}
 
-	private function __construct(){
+	public function __construct(){
 		self::$conn = mysqli_connect(DBSERVER,DBUSER,DBPASS,DBNAME);
 	}
 
 	public static function executeSQL($sql) {
-
-		$db = DB::getInstance();
+		$db = self::getInstance();
 		$req = $db->query($sql);
-		$result = $req->fetch_all(MYSQLI_ASSOC);
-		return $result;
+		return $req;
 	}
 }

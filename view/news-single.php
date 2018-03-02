@@ -1,7 +1,9 @@
 
 			<main class="clearfix">
 				<div class="left">
-					<?php echo $this->data['content']; ?>
+					<h1><?php echo $this->data['content']['title']; ?></h1>
+					<img src="/lineweb/assets/uploads/images/<?php echo $this->data['content']['image']; ?>">
+					<p class="clearfix"><?php echo $this->data['content']['news_text']; ?></p>
 				</div>
 				<div class="right">
 					<div>

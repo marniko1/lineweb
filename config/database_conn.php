@@ -1,6 +1,6 @@
 <?php
 
 define('DBSERVER', 'localhost');
-define('DBUSER', 'marniko1');
+define('DBUSER', 'marniko');
 define('DBPASS', 'bubica');
 define('DBNAME', 'lineweb');

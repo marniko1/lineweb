@@ -44,21 +44,9 @@ class news extends Controller{
 		return $links;
 	}
 
-	public function prepareSingle($single) {
-		ob_start();
-		?>
-		<h1><?php echo $single['title']; ?></h1>
-		<img src="/lineweb/assets/uploads/images/<?php echo $single['image']; ?>">
-		<p class="clearfix"><?php echo $single['text']; ?></p>
-		<?php 
-		$single_output = ob_get_clean();
-		return $single_output;
-	}
-
 	public function getSingle($id) {
-		$single = DBNews::singleNews($id);
-		$this->data['title'] = 'News/'.$single['title'];
-		$this->data['content'] = $this->prepareSingle($single);
+		$this->data['content'] = DBNews::singleNews($id);
+		$this->data['title'] = 'News/'.$this->data['content']['title'];
 		$this->show_view('news-single');
 	}
 }

@@ -7,8 +7,7 @@ class DBLogin extends DB {
 
 	public static function loginData($username,$password) {
 		$sql = "SELECT * FROM users WHERE username = '$username' AND password = '$password'";
-		$db = DB::getInstance();
-		$res = $db->query($sql);
+		$res = DB::executeSQL($sql);
 		$login_data = $res->fetch_assoc();
 		if ($login_data) {
 			return $login_data;

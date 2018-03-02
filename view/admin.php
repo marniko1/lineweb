@@ -1,6 +1,6 @@
 			<main class="clearfix">
 				<section>
-					<?php if(!isset($_SESSION['user'])) { ?>
+					<?php if(!isset($this->data['session'])) { ?>
 					<form action="" method="post">
 						<fieldset>
 							<legend>Login</legend>
@@ -13,7 +13,7 @@
 								<input type="password" name="password" id="password">
 							</div>
 							<div>
-								<input type="submit" name="submit" value="Submit">
+								<input type="submit" name="login" value="Login">
 							</div>
 							<?php
 							if (isset($this->data['message'])) {
@@ -35,18 +35,23 @@
 								<input type="text" name="author" id="author">
 							</div>
 							<div>
-								<label for="text">Text:</label>
+								<label for="news_text">Text:</label>
 							</div>
 							<div>
-								<textarea name="text" id="text"></textarea>
+								<textarea name="news_text" id="news_text"></textarea>
 							</div>
 							<div>
-								<input type="file" name="">
+								<input type="file" name="image">
 							</div>
 							<div>
-								<input type="submit" name="submit" value="Submit">
+								<input type="submit" name="upload" value="Upload">
 								<input type="reset" value="Reset">
 							</div>
+							<?php
+							if (isset($this->data['message'])) {
+								echo $this->data['message'];
+							}
+							?>
 						</fieldset>
 					</form>
 					<?php } ?>
