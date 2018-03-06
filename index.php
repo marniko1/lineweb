@@ -18,6 +18,7 @@ class Controller{
 		}
 		if (isset($_SESSION['user'])) {
 			$this->data['session'] = true;
+			$this->data['user'] = $_SESSION['user'];
 		}
 		require 'view/header.php';
 		require 'view/'.$view.'.php';

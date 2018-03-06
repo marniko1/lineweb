@@ -35,9 +35,16 @@ class DBNews extends DB {
 	// 	$max_id = $req->fetch_row();
 	// 	return $max_id[0];
 	// }
+	public static function getAuthorsId($author) {
+		$sql ="SELECT id FROM users WHERE user = '$author'";
+		$req = DB::executeSQL($sql);
+		$author = $req->fetch_assoc();
+		return $author['id'];
+	}
 
-	public static function insertNewsIntoDB($title,$image_name,$news_text,$author) {
-		$sql = "INSERT INTO news (title,image,news_text,author) VALUES ('$title','$image_name','$news_text','$author')";
+	public static function insertNewsIntoDB($title,$image_name,$news_text,$id_author) {
+		// var_dump($id_author);die;
+		$sql = "INSERT INTO news (title,image,news_text,id_user) VALUES ('$title','$image_name','$news_text','$id_author')";
 		$req = DB::executeSQL($sql);
 		if ($req) {
 			return true;

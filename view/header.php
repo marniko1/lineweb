@@ -35,13 +35,13 @@
 		</script>
 	</head>
 	<body>
-		<?php if(isset($_SESSION['user'])) { ?>
+		<?php if(isset($this->data['session'])) { ?>
 			<div class="logout">
 				<a href="/lineweb/admin/index">Admin panel</a>
 				<form action="" method="post" name="logout_form">
 					<input type="submit" name="logout" value="Logout">
 				</form>
-				<span>Korisnik <?php echo $_SESSION['user']; ?></span>
+				<span>Korisnik <?php echo $this->data['user']; ?></span>
 			</div>
 		<?php } ?>
 		<div class="wrapper">

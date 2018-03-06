@@ -34,11 +34,13 @@ class admin extends Controller{
 		$title = $_POST['title'];
 		$image = $_FILES['image'];
 		$news_text = $_POST['news_text'];
-		$author = $_POST['author'];
+		$authors_name = $_POST['author'];
 
 		$image_name = $_FILES['image']['name'];
 
-		$upload = DBNews::insertNewsIntoDB($title,$image_name,$news_text,$author);
+		$id_author = DBNews::getAuthorsId($authors_name);
+
+		$upload = DBNews::insertNewsIntoDB($title,$image_name,$news_text,$id_author);
 		move_uploaded_file($_FILES['image']['tmp_name'], $_SERVER['DOCUMENT_ROOT'].'/lineweb/assets/uploads/images/'.$image_name);
 
 		if ($upload == true) {

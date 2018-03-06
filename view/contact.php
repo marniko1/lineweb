@@ -66,7 +66,7 @@
 						</ul>
 					</div>
 					<div>
-						<img src="images/reklama.gif">
+						<img src="../assets/images/reklama.gif">
 					</div>
 				</div>
 			</main>
