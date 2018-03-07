@@ -7,6 +7,8 @@
 		<link rel="stylesheet" type="text/css" href="/lineweb/assets/css/main.css" media="screen">
 		<link rel="stylesheet" type="text/css" href="/lineweb/assets/css/responsive.css" media="screen">
 		<script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+		<script src="http://js.nicedit.com/nicEdit-latest.js" type="text/javascript"></script>
+		<!-- <script type="text/javascript">bkLib.onDomLoaded(nicEditors.allTextAreas);</script> -->
 		<script type="text/javascript">
 			jQuery(document).ready(function($){
 				$('.nav_btn').on('click', function(e){
@@ -32,6 +34,7 @@
 				    var page = $(this).attr("href");
 				    $('#content').load('/lineweb/news/'+ page +' #content');
 				});
+				bkLib.onDomLoaded(nicEditors.allTextAreas);
 		</script>
 	</head>
 	<body>

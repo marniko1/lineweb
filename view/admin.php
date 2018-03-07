@@ -38,7 +38,7 @@
 								<label for="news_text">Text:</label>
 							</div>
 							<div>
-								<textarea name="news_text" id="news_text"></textarea>
+								<textarea name="news_text" style="height: 100px; width: 100%;" cols="50" id="area5"></textarea>
 							</div>
 							<div>
 								<input type="file" name="image">
