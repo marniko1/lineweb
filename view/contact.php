@@ -24,7 +24,7 @@
 							</div>
 							<div>
 								<label for="message">Your message:</label>
-								<textarea name="message" id="message"></textarea>
+								<textarea name="message" id="message area5" style="height: 100px; width: 100%;" cols="50"></textarea>
 							</div>
 							<div>
 								<input type="checkbox" name="checkbox">Newsletter?

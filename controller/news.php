@@ -4,8 +4,9 @@ class news extends Controller{
 	public function index($pg){
 		$this->data['title'] = 'News';
 		$top_six = DBNews::topSix($pg);
-		$this->data['content_left'] = $this->prepareTopSixLeft($top_six);
-		$this->data['content_right'] = $this->prepareTopSixRight($top_six);
+		$data = $this->prepareFilteredText($top_six);
+		$this->data['content_left'] = $this->prepareTopSixLeft($data);
+		$this->data['content_right'] = $this->prepareTopSixRight($data);
 		$total_news_num = DBNews::totalNewsNumber();
 		$this->data['pagination_links'] = $this->preparePaginationLinks($total_news_num,$pg);
 		$this->show_view('news');
@@ -19,6 +20,14 @@ class news extends Controller{
 	public function prepareTopSixRight($top_six) {
 		$top_six_right = array_slice($top_six, 3, 3);
 		return $top_six_right;
+	}
+
+	public function prepareFilteredText($data_array) {
+		foreach ($data_array as $key => $value) {
+			$text = substr(strip_tags($value['news_text']), 0, 200).'... ';
+			$data_array[$key]['filtered_text'] = $text;
+		}
+		return $data_array;
 	}
 
 	public function preparePaginationLinks($total_news_num,$pg) {
